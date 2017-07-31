@@ -45,6 +45,7 @@ namespace HQF.Tutorials.ElasticSearch
 
             Debug.WriteLine("People Count: [{0}] ",people.Count);
 
+
             return people.Count;
 
         }

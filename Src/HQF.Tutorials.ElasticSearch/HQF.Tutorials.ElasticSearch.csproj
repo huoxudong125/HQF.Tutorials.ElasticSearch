@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\Company.cs" />
     <Compile Include="ElasticSearchDemo.cs" />
+    <Compile Include="Domain\Employee.cs" />
     <Compile Include="MyCustomHttpConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
