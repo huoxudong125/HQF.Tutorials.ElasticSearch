@@ -49,5 +49,67 @@ namespace HQF.Tutorials.ElasticSearch
             return people.Count;
 
         }
+
+
+        public void InsertData<T>(T t) where T : class
+        {
+            if (t == null)
+            {
+                throw new ArgumentNullException("t is null!");
+            }
+            var client = GetElasticClient();
+
+            client.Index(t);
+
+        }
+
+        public List<T> GetData<T>(string firstName) where T : class
+        {
+            var t= new List<T>();
+
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                var client = GetElasticClient();
+
+                var searchRequest = new SearchRequest<Person>(Nest.Indices.All, Types.All)
+                {
+                    From = 0,
+                    Size = 10,
+                    Query = new MatchQuery
+                    {
+                        Field = Infer.Field<Person>(f => f.FirstName),
+                        Query = firstName
+                    }
+                };
+
+                var searchResponse =  client.Search<T>(searchRequest);
+                t = searchResponse.Documents.ToList();
+                
+            }
+
+            return t;
+        }
+
+
+        #region private functions
+
+        private ElasticClient GetElasticClient(string indexName= "people")
+        {
+            var uris = new[]
+            {
+                new Uri("http://172.16.1.27:9200"),
+            
+            };
+
+            var connectionPool = new SniffingConnectionPool(uris);
+            var settings = new ConnectionSettings(connectionPool)
+                .DefaultIndex(indexName);
+
+            var client = new ElasticClient(settings);
+
+            return client;
+        }
+
+        #endregion
     }
 }
