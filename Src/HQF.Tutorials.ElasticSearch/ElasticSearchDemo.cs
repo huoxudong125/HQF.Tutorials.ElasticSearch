@@ -90,6 +90,8 @@ namespace HQF.Tutorials.ElasticSearch
             return t;
         }
 
+        
+
 
         #region private functions
 

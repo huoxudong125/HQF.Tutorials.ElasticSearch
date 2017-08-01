@@ -44,5 +44,20 @@ namespace HQF.Tutorials.ElasticSearch.UnitTest
 
         }
 
+        [Fact]
+        public void TestIndexPersonChinese()
+        {
+            _elasticSearch.InsertData(new Person() { FirstName = "考虑旭东", Id = 3, LastName = "Huo" });
+            var persons = _elasticSearch.GetData<Person>("虑");
+            var count = persons.Count;
+
+            Assert.Equal(1, count);
+
+            foreach (var person in persons)
+            {
+                _testOutputHelper.WriteLine(person.FirstName);
+            }
+
+        }
     }
 }
