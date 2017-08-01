@@ -58,6 +58,7 @@
     <Compile Include="Domain\Employee.cs" />
     <Compile Include="MyCustomHttpConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleNodeElasticSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

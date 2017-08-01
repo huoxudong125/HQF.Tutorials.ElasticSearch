@@ -10,19 +10,19 @@ namespace HQF.Tutorials.ElasticSearch.UnitTest
 {
     public class ElasticSearchDemoUnitTest
     {
-        private readonly ElasticSearchDemo _elasticSearch;
+        private readonly ElasticSearchHelper _elasticSearch;
         private readonly ITestOutputHelper _testOutputHelper;
 
         public ElasticSearchDemoUnitTest(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
-            _elasticSearch=new ElasticSearchDemo();
+            _elasticSearch=new ElasticSearchHelper();
         }
 
         [Fact]
         public void Test()
         {
-            var els = new ElasticSearchDemo();
+            var els = new SingleNodeElasticSearch();
             var count= els.connectElasticSearch();
             Assert.Equal(1,count);
         }
@@ -47,7 +47,7 @@ namespace HQF.Tutorials.ElasticSearch.UnitTest
         [Fact]
         public void TestIndexPersonChinese()
         {
-            _elasticSearch.InsertData(new Person() { FirstName = "考虑旭东", Id = 3, LastName = "Huo" });
+            _elasticSearch.InsertData(new Person() { FirstName = "考虑", Id = 3, LastName = "Huo" });
             var persons = _elasticSearch.GetData<Person>("虑");
             var count = persons.Count;
 
