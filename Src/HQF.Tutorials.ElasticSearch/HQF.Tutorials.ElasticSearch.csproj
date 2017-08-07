@@ -60,6 +60,7 @@
     <Compile Include="MyCustomHttpConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleNodeElasticSearch.cs" />
+    <Compile Include="UserDocElasticSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

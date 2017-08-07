@@ -38,11 +38,18 @@ namespace HQF.Tutorials.ElasticSearch
 
             var people = searchResponse.Documents;
 
-            Debug.WriteLine("People Count: [{0}] ",people.Count);
+            Debug.WriteLine("People Count: [{0}] ", people.Count);
 
 
             return people.Count;
 
         }
+
+
+       
     }
+
+
+   
+
 }
