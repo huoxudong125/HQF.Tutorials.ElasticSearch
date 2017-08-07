@@ -22,14 +22,16 @@ namespace HQF.Tutorials.ElasticSearch.UnitTest
 
             //_userElasticSearch.InitUsers();
 
-            var userDocs = _userElasticSearch.SearchUser("M2");
+            var userDocs = _userElasticSearch.SearchUser("M6");
             Assert.True(userDocs.Any(), "userCount 应该大于0");
 
 
             _outputHelper.WriteLine("UserCount:[{0}]", userDocs.Count);
 
             foreach (var userDoc in userDocs)
-                _outputHelper.WriteLine("Name:[{0}],Id:[{1}]", userDoc.NickName, userDoc.Id);
+                _outputHelper.WriteLine("Name:[{0}],Id:[{1}],ProductCount[{2}]"
+                    , userDoc.NickName, userDoc.Id,userDoc.ProductCount);
+
         }
     }
 }

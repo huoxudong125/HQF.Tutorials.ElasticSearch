@@ -48,16 +48,15 @@ namespace HQF.Tutorials.ElasticSearch
 
             var searchResponse = client.Search<UserDoc>(s => s
                 .From(0)
-                .Size(10)
-                .Query(q => q//.Match(m=>m.Query(nickName))
-
-                    .Bool(b => b.Must(mu => mu.Match(
-                            m => m
-                                .Field(f => f.NickName)
-                                .Query(nickName)
+                .Size(50)
+                .Query(q => //q.Match(m=>m.Query(nickName))
+                    q.Bool(b => b.Must(mu => mu.Match(
+                            m => m.Field(f=>f.NickName)
+                            .Query(nickName)
+                            
                         ))
                     .Filter(fi => fi.Range(r => r.Field(f => f.ProductCount)
-                        .GreaterThan(0)
+                        .GreaterThan(10)
                     ))
                     )
 
