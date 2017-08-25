@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomAnalyerUnitTest.cs" />
     <Compile Include="ElasticSearchDemoUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestEsInMemoryConnection.cs" />
