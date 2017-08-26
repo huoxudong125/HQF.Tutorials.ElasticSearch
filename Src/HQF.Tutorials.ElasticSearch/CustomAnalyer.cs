@@ -112,6 +112,13 @@ namespace HQF.Tutorials.ElasticSearch
             Console.WriteLine("Done.");
         }
 
+
+        public static void Index(UserDoc userDoc)
+        {
+            Client = NuSearchConfiguration.GetClient();
+            Client.Index(userDoc);
+        }
+
         private static List<UserDoc> GetUserDocs()
         {
             var userDocs = new List<UserDoc>();
